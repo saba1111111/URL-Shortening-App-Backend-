@@ -26,3 +26,21 @@ export const encodeFunction: RequestHandler = async (req,res,next) => {
     }
   }
 }
+
+export const decodeFunction: RequestHandler = async (req,res,next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return res.status(400).json({message: errors});
+
+   const {link} = req.body;
+   try {
+    const bitly = new BitlyClient(process.env.ACCESS_TOKEN || "", {});
+    const result = await bitly.expand(link);
+    res.json({result})
+   }catch(error) {
+    if (isBitlyErrResponse(error)) {
+      res.status(400).json({message: error.description});
+    } else {
+      next(error);
+    }
+   }
+}
