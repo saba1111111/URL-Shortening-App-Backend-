@@ -1,7 +1,10 @@
 import express from "express";
 import { Request,Response,NextFunction } from "express";
 import mainRouter from "./routes/main";
+import {json} from "body-parser";
+
 const app = express();
+app.use(json());
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin',"http://localhost:3000");
@@ -12,7 +15,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
-
 
 app.use(mainRouter);
 

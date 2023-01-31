@@ -5,7 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const main_1 = __importDefault(require("./routes/main"));
+const body_parser_1 = require("body-parser");
 const app = (0, express_1.default)();
+app.use((0, body_parser_1.json)());
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', "http://localhost:3000");
     res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
