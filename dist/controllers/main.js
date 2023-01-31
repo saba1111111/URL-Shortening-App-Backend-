@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.decodeFunction = exports.encodeFunction = void 0;
+exports.fetchAllUrls = exports.decodeFunction = exports.encodeFunction = void 0;
 const express_validator_1 = require("express-validator");
 const bitly_1 = require("bitly");
 const fs_1 = require("fs");
@@ -50,3 +50,13 @@ const decodeFunction = async (req, res, next) => {
     }
 };
 exports.decodeFunction = decodeFunction;
+const fetchAllUrls = async (req, res, next) => {
+    try {
+        const datas = await (0, getDatas_1.getDatas)();
+        res.json({ urls: datas });
+    }
+    catch (error) {
+        next(error);
+    }
+};
+exports.fetchAllUrls = fetchAllUrls;

@@ -44,3 +44,12 @@ export const decodeFunction: RequestHandler = async (req,res,next) => {
     }
    }
 }
+
+export const fetchAllUrls: RequestHandler = async (req,res,next) => {
+  try {
+    const datas = await getDatas();
+    res.json({urls: datas})
+  }catch(error){
+   next(error);
+  }
+}
