@@ -1,0 +1,10 @@
+### shorten
+POST http://localhost:4000/decode
+Content-Type: application/json
+
+{
+  "link": "https://bit.ly/3HBZnrt"
+}
+
+### get allUrls
+GET http://localhost:4000/allUrls
