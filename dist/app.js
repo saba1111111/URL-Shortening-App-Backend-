@@ -10,6 +10,7 @@ const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const documentation_1 = __importDefault(require("./apiDocumentation/documentation"));
 const app = (0, express_1.default)();
 app.use((0, body_parser_1.json)());
+app.use((0, body_parser_1.json)());
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');

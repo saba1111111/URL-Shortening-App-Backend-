@@ -6,6 +6,7 @@ import swaggerDoc from 'swagger-ui-express';
 import swaggerDocumentation from './apiDocumentation/documentation';
 
 const app = express();
+app.use(json());
 
 app.use(json());
 
